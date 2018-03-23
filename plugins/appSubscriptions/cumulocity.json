@@ -1,0 +1,16 @@
+{
+  "name": "Hello world",
+  "description": "A simple hello world plugin",
+  "category": "Boilerplate",
+  "imports": [],
+  "ngModules": [
+    "c8y.enhanced.appSubscriptions"
+  ],
+  "js": [
+    "appSubscriptions.module.js",
+    "appSubscriptions.config.js",
+    "appSubscriptions.component.js"
+  ],
+  "css": [],
+  "copy": []
+}

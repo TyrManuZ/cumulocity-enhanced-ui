@@ -1,0 +1,20 @@
+{
+	"name": "Enhancement",
+	"comment": "Add the plugins to the default applications",
+  "replaceImports": {
+  },
+	"applications": [
+		{
+			"contextPath": "cockpit"
+		},
+    {
+			"contextPath": "devicemanagement"
+		},
+    {
+			"contextPath": "administration",
+      "addImports": [
+        "cumulocity-enhanced-ui/appSubscriptions"
+      ]
+		}
+	]
+}
