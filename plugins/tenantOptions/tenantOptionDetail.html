@@ -1,0 +1,49 @@
+<ng-form name="tenantOptionDetailForm">
+  <div
+    class="form-group"
+    ng-class="{'has-error': tenantOptionDetailForm.category.$dirty && tenantOptionDetailForm.category.$invalid}"
+  >
+    <label>
+      {{'Category' | translate}}
+    </label>
+
+    <input
+      class="form-control"
+      name="category"
+      required
+      ng-model="vm.option.category"
+      ng-disabled="!vm.create"
+    >
+  </div>
+  <div
+    class="form-group"
+    ng-class="{'has-error': tenantOptionDetailForm.key.$dirty && tenantOptionDetailForm.key.$invalid}"
+  >
+    <label>
+      {{'Key' | translate}}
+    </label>
+
+    <input
+      class="form-control"
+      name="key"
+      required
+      ng-model="vm.option.key"
+      ng-disabled="!vm.create"
+    >
+  </div>
+  <div
+    class="form-group"
+    ng-class="{'has-error': tenantOptionDetailForm.value.$dirty && tenantOptionDetailForm.value.$invalid}"
+  >
+    <label>
+      {{'Value' | translate}}
+    </label>
+
+    <input
+      class="form-control"
+      name="value"
+      required
+      ng-model="vm.option.value"
+    >
+  </div>
+</ng-form>

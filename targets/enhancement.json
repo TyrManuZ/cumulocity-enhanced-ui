@@ -13,7 +13,8 @@
     {
 			"contextPath": "administration",
       "addImports": [
-        "cumulocity-enhanced-ui/appSubscriptions"
+        "cumulocity-enhanced-ui/appSubscriptions",
+        "cumulocity-enhanced-ui/tenantOptions"
       ]
 		}
 	]

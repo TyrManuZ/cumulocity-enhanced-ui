@@ -1,0 +1,55 @@
+<div>
+  <div class="page-toolbar c8y-toolbar-spacer">
+    <div class="navbar navbar-default c8y-toolbar" c8y-affix>
+      <div class="navbar-collapse collapse">
+        <ul class="nav navbar-nav navbar-left">
+          <li class="navbar-form">
+            <div class="input-group input-group-search">
+              <input type="search"
+                class="form-control"
+                placeholder="Filter…"
+                ng-model="vm.searchString">
+              <span class="input-group-addon">
+                <i c8y-icon="filter" ng-show="vm.searchString.length === 0 || !vm.searchString "></i>
+                <i c8y-icon="times" class="text-muted ng-hide" ng-show="vm.searchString.length > 0" ng-click="vm.searchString = ''"></i>
+              </span>
+            </div>
+          </li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li>
+            <button class="btn btn-link" ng-click="vm.popupAddTenantOption()">
+              <i c8y-icon="plus-square"></i>
+              <span translate>Create option</span>
+            </button>
+          </li>
+          <li>
+            <button class="btn btn-link" ng-click="vm.refresh()">
+              <i c8y-icon="refresh"></i>
+              <span translate>Reload</span>
+            </button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <table class="table table-striped table-condensed table-hover">
+    <thead>
+      <tr>
+        <th>Category</th>
+        <th>Key</th>
+        <th>Value</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="option in vm.options | filter: vm.searchString | orderBy:'category'" ng-click="vm.popupUpdateTenantOption(option)">
+        <td>{{option.category}}</td>
+        <td>{{option.key}}</td>
+        <td>{{option.value}}</td>
+        <td>
+          <button ng-click="vm.popupDeleteTenantOption(option)" type="button" class="btn btn-danger btn-xs showOnHover btn-icon"><i c8y-icon="times" class="fa fw fa-times"></i></button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

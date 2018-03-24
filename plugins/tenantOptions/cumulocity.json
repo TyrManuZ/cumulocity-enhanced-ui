@@ -1,0 +1,19 @@
+{
+  "name": "Tenant Options",
+  "description": "CRUD UI for tenant options",
+  "category": "Utils",
+  "imports": [],
+  "ngModules": [
+    "c8y.enhanced.tenantOptions"
+  ],
+  "js": [
+    "tenantOptions.module.js",
+    "tenantOptions.config.js",
+    "tenantOptions.component.js",
+    "tenantOptionDetail.component.js",
+    "modals/createTenantOption.component.js",
+    "modals/updateTenantOption.component.js"
+  ],
+  "css": [],
+  "copy": []
+}

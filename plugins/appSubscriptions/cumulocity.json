@@ -1,7 +1,7 @@
 {
-  "name": "Hello world",
-  "description": "A simple hello world plugin",
-  "category": "Boilerplate",
+  "name": "Application Subscriptions",
+  "description": "Lists all applications assigned to the tenant",
+  "category": "Utils",
   "imports": [],
   "ngModules": [
     "c8y.enhanced.appSubscriptions"
