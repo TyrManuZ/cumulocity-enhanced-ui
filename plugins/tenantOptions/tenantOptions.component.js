@@ -79,7 +79,7 @@
             option: function() {
               return option;
             }
-          } 
+          }
         })
         .then(updateTenantOption)
         .then(() => refresh())

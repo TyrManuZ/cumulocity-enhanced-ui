@@ -15,8 +15,7 @@
   /* @ngInject */
   function Controller(
     c8yApplication,
-    c8yTitle,
-    $location
+    c8yTitle
   ) {
     const vm = this;
 
