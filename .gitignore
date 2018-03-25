@@ -1,3 +1,7 @@
+# C8Y builds
+build
+_build_for_deploy
+
 # Logs
 logs
 *.log

@@ -16,13 +16,15 @@
       exportDashboard
     };
 
+    const CONSTANTS = dashboardUtilsConstants;
+
     return service;
 
     ////////////
     function cleanseDashboardJson(dashboard) {
       var deferred = $q.defer();
       dashboard = dashboard.data
-      _.forEach(dashboardUtilsConstants.DASHBOARD_KEYS_TO_BE_REMOVED, function(key) {
+      _.forEach(CONSTANTS.DASHBOARD_KEYS_TO_BE_REMOVED, function(key) {
         delete dashboard[key];
       });
       deferred.resolve(dashboard);

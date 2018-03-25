@@ -7,7 +7,7 @@
     "c8y.enhanced.dashboardUtils"
   ],
   "js": [
-    "jszip/jszip.min.js",
+    "node_modules/jszip/dist/jszip.min.js",
     "dashboardUtils.module.js",
     "dashboardUtils.config.js",
     "dashboardUtils.constants.js",
