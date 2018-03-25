@@ -16,7 +16,8 @@
   function Controller(
     c8ySettings,
     c8yModal,
-    c8yAlert
+    c8yAlert,
+    c8yTitle
   ) {
     const vm = this;
 
@@ -31,6 +32,9 @@
     ////////////
 
     function $onInit() {
+      c8yTitle.changeTitle({
+        title: "Tenant options"
+      });
       refresh();
     }
 

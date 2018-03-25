@@ -42,10 +42,10 @@
       </tr>
     </thead>
     <tbody>
-      <tr ng-repeat="option in vm.options | filter: vm.searchString | orderBy:'category'" ng-click="vm.popupUpdateTenantOption(option)">
-        <td>{{option.category}}</td>
-        <td>{{option.key}}</td>
-        <td>{{option.value}}</td>
+      <tr ng-repeat="option in vm.options | filter: vm.searchString | orderBy:'category'">
+        <td ng-click="vm.popupUpdateTenantOption(option)">{{option.category}}</td>
+        <td ng-click="vm.popupUpdateTenantOption(option)">{{option.key}}</td>
+        <td ng-click="vm.popupUpdateTenantOption(option)">{{option.value}}</td>
         <td>
           <button ng-click="vm.popupDeleteTenantOption(option)" type="button" class="btn btn-danger btn-xs showOnHover btn-icon"><i c8y-icon="times" class="fa fw fa-times"></i></button>
         </td>
