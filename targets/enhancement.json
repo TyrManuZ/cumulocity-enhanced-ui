@@ -5,7 +5,10 @@
   },
 	"applications": [
 		{
-			"contextPath": "cockpit"
+			"contextPath": "cockpit",
+      "addImports": [
+        "cumulocity-enhanced-ui/dashboardUtils"
+      ]
 		},
     {
 			"contextPath": "devicemanagement"
