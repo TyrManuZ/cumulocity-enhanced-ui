@@ -59,6 +59,8 @@ Versions tested:
 This plugin lists all applications that are available within your tenant. While "Own applications" only lists the applications created by you this plugin also shows the applications that were subscribed to your tenant by your parent tenant. 
 Note that currently this list cannot display whether your application is actually subscribed to your tenant or not (the API does not have this information currently). For applications not owned by you it is guaranteed that they are subscribed to your tenant because otherwise you wouldn't see them.
 
+![Application list](screenshots/appSubscriptions/all-applications.png)
+
 ## <a name="tenant-options"></a>Tenant options
 
 |Application|Type|
@@ -71,6 +73,11 @@ Versions tested:
 *Note: This plugin only uses tenant option API and therefore should also work on older versions*
 
 This plugin allows you CRUD operations for the tenant options. If you see tenant options and don't know what they mean I highly recommend to not change them. Some of the tenant options can also be changed through default UIs. This plugin gives you the raw view on all of them.
+
+![Tenant options list](screenshots/tenantOptions/tenant-options-list.png)
+![Tenant option create](screenshots/tenantOptions/tenant-option-create.png)
+![Tenant option update](screenshots/tenantOptions/tenant-option-update.png)
+![Tenant option delete](screenshots/tenantOptions/tenant-option-delete.png)
 
 ## <a name="dashboard-utils"></a>Dashboard export/import
 
