@@ -22,13 +22,11 @@
 
     ////////////
     function cleanseDashboardJson(dashboard) {
-      var deferred = $q.defer();
       dashboard = dashboard.data
       _.forEach(CONSTANTS.DASHBOARD_KEYS_TO_BE_REMOVED, function(key) {
         delete dashboard[key];
       });
-      deferred.resolve(dashboard);
-      return deferred.promise;
+      return dashboard;
     }
 
     function generateZip(dashboard) {

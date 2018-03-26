@@ -1,6 +1,7 @@
 # C8Y builds
 build
 _build_for_deploy
+__temp*
 
 # Logs
 logs
