@@ -18,5 +18,14 @@
         return dashboardUtilsService.exportDashboard();
       }
     });
+
+    c8yActionsProvider.addUrlAction({
+      path: '/:subpath/:deviceId',
+      text: 'Import dashboard',
+      priority: 900,
+      action: function (dashboardUtilsService) {
+        return dashboardUtilsService.popupImportDashboard();
+      }
+    });
   }
 }());

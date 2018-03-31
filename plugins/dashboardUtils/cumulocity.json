@@ -11,7 +11,9 @@
     "dashboardUtils.module.js",
     "dashboardUtils.config.js",
     "dashboardUtils.constants.js",
-    "dashboardUtils.service.js"
+    "dashboardUtils.service.js",
+    "modals/dashboardUpload.component.js",
+    "modals/dashboardImportConfig.component.js"
   ],
   "css": [],
   "copy": []

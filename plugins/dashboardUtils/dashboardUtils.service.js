@@ -11,10 +11,14 @@
     $routeParams,
     c8yInventory,
     c8yBinary,
+    c8yModal,
+    c8yAlert,
     dashboardUtilsConstants
   ) {
     const service = {
-      exportDashboard
+      exportDashboard,
+      popupImportDashboard,
+      popupConfigureImportedDashboard
     };
 
     const CONSTANTS = dashboardUtilsConstants;
@@ -138,9 +142,37 @@
       return extension;
     }
 
+    function resolveDashboardType(dashboard) {
+      var type;
+      _.forEach(dashboard, function(value, key) {
+        if (key.startsWith('c8y_Dashboard!type!')) {
+          delete dashboard[key];
+          type = 'deviceType';
+        } else if (key.startsWith('c8y_Dashboard!group!')) {
+          delete dashboard[key];
+          type = 'group';
+        } else if (key.startsWith('c8y_Dashboard!device!')) {
+          delete dashboard[key];
+          type = 'device'
+        }
+      });
+      return type;
+    }
+
+    function generateManifest(dashboard) {
+      var manifest = {};
+      manifest.name = dashboard.data.c8y_Dashboard.name;
+      manifest.type = resolveDashboardType(dashboard.data);
+      manifest.devices = dashboard.manifest;
+      dashboard.manifest = manifest;
+      console.log(manifest);
+      return dashboard;
+    }
+
     function generateZip(dashboard) {
       var zip = new JSZip();
       zip.file('dashboard.json', angular.toJson(dashboard.data, 2));
+      zip.file('cumulocity.json', angular.toJson(dashboard.manifest, 2));
       _.forEach(dashboard.binaries, function(binary) {
         zip.file(binary.value + binary.extension, binary.data, {binary: true});
       });
@@ -156,7 +188,25 @@
         .then(detectDevices)
         .then(detectBinaries)
         .then(downloadBinaries)
+        .then(generateManifest)
         .then(generateZip)
+    }
+
+    function popupImportDashboard() {
+      return c8yModal({
+          component: 'c8yDashboardImportZip'
+        });
+    }
+
+    function popupConfigureImportedDashboard(dashboard) {
+      return c8yModal({
+          component: 'c8yDashboardImportConfig',
+          resolve: {
+            dashboard: function() {
+              return dashboard;
+            }
+          }
+        });
     }
   }
 }());
