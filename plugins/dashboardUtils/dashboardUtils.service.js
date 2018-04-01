@@ -64,7 +64,6 @@
       return binaryReference;
     }
 
-    // TODO: scada widget has an additional fragment for the mapping
     function detectDevices(dashboard) {
       var devices = {};
       _.forEach(dashboard.data.c8y_Dashboard.children, function(widget, key, widgets) {
@@ -83,6 +82,31 @@
             devices[currentDeviceId].datapoints.push(datapoint.label);
             devices[currentDeviceId].widgets.push(widget.title);
             datapoints[index].__target = {id: '{{' + newDeviceString + '}}'};
+          });
+        }
+        // Device reference in scada widget configuration for deviceIds
+        if (_.has(widget, ['config', 'deviceIds'])) {
+          _.forEach(widgets[key].config.deviceIds, function(currentDeviceId, key, deviceIds) {
+            var newDeviceString = getDeviceReferenceAndAddToManifest(devices, currentDeviceId);
+            devices[currentDeviceId].widgets.push(widget.title);
+            deviceIds[key] = '{{' + newDeviceString + '}}';
+          });
+        }
+        // Device reference in scada widget configuration for datapoint mappings
+        if (_.has(widget, ['config', 'mapping'])) {
+          _.forEach(widgets[key].config.mapping, function(datapoint, datapointName, mapping) {
+            var activeDatapoint = [];
+            if (_.has(mapping[datapointName], ['config', 'dp'])) {
+              _.forEach(mapping[datapointName].config.dp, function(value) {
+                if (value.__active == true) {
+                  var newDeviceString = getDeviceReferenceAndAddToManifest(devices, value.__target.id);
+                  value.__target.id = '{{' + newDeviceString + '}}';
+                  delete value.__target.name;
+                  activeDatapoint.push(value);
+                }
+              });
+              mapping[datapointName].config.dp = activeDatapoint;
+            }
           });
         }
       });
@@ -165,7 +189,6 @@
       manifest.type = resolveDashboardType(dashboard.data);
       manifest.devices = dashboard.manifest;
       dashboard.manifest = manifest;
-      console.log(manifest);
       return dashboard;
     }
 
