@@ -99,7 +99,7 @@
       if ($routeParams.groupId) {
         $location.path('/group/' + $routeParams.groupId + '/dashboard/' + result.data.id);
       } else if ($routeParams.deviceId) {
-        $location.path('/device/' + $routeParams.groupId + '/dashboard/' + result.data.id);
+        $location.path('/device/' + $routeParams.deviceId + '/dashboard/' + result.data.id);
       }
       c8yAlert.success('Dashboard successfully imported.')
       vm.close();
