@@ -15,11 +15,22 @@
           {{device.value | translate}}
         </label>
 
+        <a tabindex="0" uib-popover-html="'{{device.help}}'" popover-append-to-body="true" popover-placement="right" popover-trigger="'focus'" style="display:inline-block">
+          <i class="fa fa-question-circle-o text-primary"></i>
+        </a>
+
+        <c8y-device-selector-combo
+          selected-child-device="device.selectedDevice"
+          groups-selectable="true"
+          class="ng-isolate-scope">
+        </c8y-device-selector-combo>
+
         <input
           class="form-control"
+          ng-hide="true"
           name="{{device.value}}"
           required
-          ng-model="device.id"
+          ng-model="device.selectedDevice.id"
         >
       </div>
     </form>

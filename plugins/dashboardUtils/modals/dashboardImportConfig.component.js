@@ -31,12 +31,21 @@
       progress: 0,
       label: null
     };
+    var rootId = $routeParams.groupId === null ? $routeParams.deviceId : $routeParams.groupId;
 
     var devices = vm.resolve.dashboard.manifest.devices;
+    _.forEach(devices, function(device) {
+      var widgets = device.widgets.join(', ');
+      var datapoints = device.datapoints.join(', ');
+      device.help = 'Used in the following widgets: ' + widgets + '; Used for the following datapoints: ' + datapoints;
+    });
+    console.log(devices);
+
     var dashboard = vm.resolve.dashboard;
 
     _.assign(vm, {
       devices,
+      rootId,
       dashboard,
       processingStatus,
       configureDashboard,
@@ -45,7 +54,7 @@
 
     function replaceDeviceIds() {
       _.forEach(devices, function(device) {
-        dashboard.dashboard = _.replace(dashboard.dashboard, new RegExp("{{" + device.value + "}}", "g"), device.id);
+        dashboard.dashboard = _.replace(dashboard.dashboard, new RegExp("{{" + device.value + "}}", "g"), device.selectedDevice.id);
       });
     }
 

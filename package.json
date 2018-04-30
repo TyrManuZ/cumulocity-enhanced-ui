@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Additions to Cumulocity default applications",
   "dependencies": {
-    "cumulocity-ui-build": "^8.19.16",
+    "cumulocity-ui-build": "http://resources.cumulocity.com/webapps/ui/8.19.19.tar.gz",
     "jszip": "^3.1.5"
   },
   "devDependencies": {
