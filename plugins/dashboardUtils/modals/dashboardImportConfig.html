@@ -10,7 +10,21 @@
 
   <div class="modal-body container">
     <form class="col-md-4 col-md-offset-1" name="setDevicesForm">
-      <div ng-repeat="device in vm.resolve.dashboard.manifest.devices">
+      <div ng-show="vm.dashboard.manifest.type == 'deviceType'">
+        <label>
+          Device type
+        </label>
+        <input
+          class="form-control"
+          name="deviceType"
+          ng-required="vm.dashboard.manifest.type == 'deviceType'"
+          ng-model="vm.deviceType"
+        >
+      </div>
+      <div
+        ng-show="vm.dashboard.manifest.type != 'deviceType'"
+        ng-repeat="device in vm.resolve.dashboard.manifest.devices"
+      >
         <label>
           {{device.value | translate}}
         </label>
@@ -29,7 +43,7 @@
           class="form-control"
           ng-hide="true"
           name="{{device.value}}"
-          required
+          ng-required="vm.dashboard.manifest.type != 'deviceType'"
           ng-model="device.selectedDevice.id"
         >
       </div>

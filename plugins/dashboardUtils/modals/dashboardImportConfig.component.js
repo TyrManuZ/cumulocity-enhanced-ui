@@ -39,9 +39,14 @@
       var datapoints = device.datapoints.join(', ');
       device.help = 'Used in the following widgets: ' + widgets + '; Used for the following datapoints: ' + datapoints;
     });
-    console.log(devices);
 
     var dashboard = vm.resolve.dashboard;
+
+    if ($routeParams.deviceId) {
+      getDeviceType().then(function(result) {
+        vm.deviceType=result;
+      });
+    }
 
     _.assign(vm, {
       devices,
@@ -52,10 +57,18 @@
       back
     });
 
-    function replaceDeviceIds() {
-      _.forEach(devices, function(device) {
-        dashboard.dashboard = _.replace(dashboard.dashboard, new RegExp("{{" + device.value + "}}", "g"), device.selectedDevice.id);
+    function getDeviceType() {
+      return c8yInventory.detail($routeParams.deviceId).then(function(result) {
+        return result.data.type;
       });
+    }
+
+    function replaceDeviceIds() {
+      if (dashboard.manifest.type != 'deviceType') {
+        _.forEach(devices, function(device) {
+          dashboard.dashboard = _.replace(dashboard.dashboard, new RegExp("{{" + device.value + "}}", "g"), device.selectedDevice.id);
+        });
+      }
     }
 
     function setDashboardType(dashboard) {
@@ -69,7 +82,7 @@
         fragment = 'c8y_Dashboard!device!' + $routeParams.deviceId;
         dashboard.dashboard[fragment] = {};
       } else if (dashboard.manifest.type == 'deviceType') {
-        fragment = 'c8y_Dashboard!type!' + dashboard.dashboard.c8y_Dashboard.deviceType;
+        fragment = 'c8y_Dashboard!type!' + vm.deviceType;
         dashboard.dashboard[fragment] = {};
       }
       return dashboard;
