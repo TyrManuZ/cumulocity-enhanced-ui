@@ -6,7 +6,6 @@ While probably not helpful for the end user they can speed up some interactions 
 # Content
 * [Prerequisites](#prerequisites)
 * [Deployment](#deployment)
-* [Development](#development)
 * [Available plugins](#available-plugins)
   * [All applications](#all-applications)
   * [Tenant options](#tenant-options)
@@ -38,10 +37,6 @@ In order to to deploy the additional plugins you need to do the following steps:
   c8y deploy:target enhancement
   ```
   This will prompt you with your url, tenant, username and password.
-  
-# <a name="development"></a>Development
-
-TODO
 
 # <a name="available-plugins"></a>Available plugins
 
@@ -53,6 +48,8 @@ TODO
 
 Versions tested:
 * 8.19.16
+* 9.10.0
+* 9.11.3
 
 *Note: This plugin only uses application API and therefore should also work on older versions*
 
@@ -69,6 +66,8 @@ Note that currently this list cannot display whether your application is actuall
 
 Versions tested:
 * 8.19.16
+* 9.10.0
+* 9.11.3
 
 *Note: This plugin only uses tenant option API and therefore should also work on older versions*
 
@@ -81,11 +80,19 @@ This plugin allows you CRUD operations for the tenant options. If you see tenant
 
 ## <a name="dashboard-utils"></a>Dashboard export/import
 
-IN DEVELOPMENT - CURRENTLY ONLY EXPORT OF CONFIG
-
 |Application|Type|
 |---|---|
 |Cockpit|Action menu entry|
 
+Versions tested:
+* 8.19.16
+* 9.10.0
+* 9.11.3
+
 This plugin allows you to export your dashboards in a zip containing all configuration information and also external files (like images or SVGs) if present.
-Additionally you can also import the zip files into a tenant. This should spead up your time-to-demo for once created demos.
+Additionally you can also import the zip files into a tenant. This should speed up your time-to-demo for once created demos. Upon import of the zip you will prompted to link the dashboard again to devices if your widgets referenced devices or data from devices.
+
+![Dashboard export](screenshots/dashboardUtils/export.png)
+![Dashboard import](screenshots/dashboardUtils/import.png)
+![ZIP upload](screenshots/dashboardUtils/upload.png)
+![Import configuration](screenshots/dashboardUtils/configure.png)
